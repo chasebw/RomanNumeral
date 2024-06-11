@@ -3,7 +3,6 @@ package com.chase.app.roman.controllers;
 import com.chase.app.roman.dto.RomanNumeralResponse;
 import com.chase.app.roman.exceptions.InvalidInputException;
 import com.chase.app.roman.service.IRomanNumeralService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +21,17 @@ public class NumberController {
         this.romanNumeralService = romanNumeralService;
     }
 
+    /**
+     * Endpoint for handling roman numeral query
+     *
+     * @param number integer value to get corresponding romanNumeral for.
+     * @return an {@link ResponseEntity} of {@link RomanNumeralResponse} that holds
+     * the provided integer from the number `query` and calculated RomanNumeral for that integer.
+     */
     @GetMapping("/romannumeral")
     public ResponseEntity<RomanNumeralResponse> romanNumeral(
-            @RequestParam(name = "query") int number) throws Exception {
+            @RequestParam(name = "query") int number
+    ) throws Exception {
         logger.debug("Requested - Roman Numeral Query: {}", number);
 
         if (number < 1 || number > 3999) {

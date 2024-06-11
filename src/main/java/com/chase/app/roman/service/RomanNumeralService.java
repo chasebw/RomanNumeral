@@ -9,6 +9,13 @@ public class RomanNumeralService implements IRomanNumeralService {
     private final int[] intForRomanArr = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     private static final int MAX_ROMAN_INT = 3999;
 
+
+    /**
+     * used to calculate the Roman numeral for a particular integer
+     *
+     * @param number integer value to get corresponding romanNumeral for.
+     * @return a string for the corresponding romanNumeral for the integer provided
+     */
     public String calculateRomanNumeralFromInt(int number) {
         if (number < 1 || number > MAX_ROMAN_INT ) {
             throw new IllegalArgumentException(

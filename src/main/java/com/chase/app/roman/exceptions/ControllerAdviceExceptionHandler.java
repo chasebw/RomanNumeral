@@ -30,7 +30,7 @@ public class ControllerAdviceExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleMisMatchException(Exception ex) {
         Map<String, Object> errorBody = new HashMap<>();
         logger.error("error: {}", ex.getMessage(), ex);
-        errorBody.put("error", "Invalid Input: expected integer value for 'query' parameter");
+        errorBody.put("error", "Invalid Input: expected integer value for 'query' parameter in range [1,3999].");
         return new ResponseEntity<>(errorBody, HttpStatus.BAD_REQUEST);
     }
 
@@ -38,7 +38,7 @@ public class ControllerAdviceExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleMissingNumberException(Exception ex) {
         Map<String, Object> errorBody = new HashMap<>();
         logger.error("error: {}", ex.getMessage(), ex);
-        errorBody.put("error", "Invalid Input: required parameter missing 'query'");
+        errorBody.put("error", "Invalid Input: required parameter missing 'query'.");
         return new ResponseEntity<>(errorBody, HttpStatus.BAD_REQUEST);
     }
 }

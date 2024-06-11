@@ -10,14 +10,20 @@
   - <https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html>
 - Maven installed
   - <https://maven.apache.org/what-is-maven.html>
-- `make` installed
+- Make installed
   - macos: <https://formulae.brew.sh/formula/make>
   - windows: ...
   - linux: ...
+- Dependencies Installed
+```bash
+mvn install
+```
 
 ---
 
 ## How do I run the app?
+
+- See `Makefile` or below commands
 
 ### Run Commands
 
@@ -28,7 +34,6 @@ make run
 
 - Alternatively Run via maven command
 ```bash
-mvn clean install
 mvn spring-boot:run
 ```
 
@@ -38,33 +43,109 @@ mvn spring-boot:run
 
 ### Test Commands
 
-- Run via make
+- Run make
 ```bash
 make test
 ```
 
-- Run via maven
+- Alternatively via maven command
 ```bash
 mvn test
 ```
 
 ---
 
-## How do I Debug the app?
-- ...
-
----
-
-## Where do I access the app?
+## Where do I access the app locally?
 - http://localhost:8080/romannumeral?query=22
 
 ```bash
 make start
 ```
 
-- consider setting up swagger
+---
+
+## Engineering Methodology
+
+ All contributions are expected to undergo thorough code reviews to maintain code quality 
+and consistency. All new contributions should contain test coverage and explanations of new code in commits/PRs.
+
+### Design Principles
+We adhere to SOLID principles to ensure our codebase remains robust, maintainable, and scalable. We strive to avoid
+redundancy by following the DRY principle across all codebases.
+
+### Architectural Overview
+We utilize a microservices architecture, facilitating scalable and independent service management. Our RESTful APIs 
+are designed to be stateless and are documented using Swagger for clarity and ease of use.
+
+### Technologies Used
+- **Spring Web MVC**: For rapid API development.
 
 ---
+
+## Testing Methodology
+
+Our testing framework is comprehensive, ensuring high reliability and fewer regressions in our codebase.
+
+### Testing Types
+- **Unit Testing**: We use JUnit and Mockito for unit tests, aiming to cover both positive, negative and edge case 
+scenarios for all methods. 
+- **Description**: We these test individual components in isolation, ensuring that each part functions correctly independently.
+
+
+### Test Coverage
+We aim for at least **80%** test coverage.
+
+### CI/CD
+**CI/CD** will run test suites on every **pushed commit**
+and **pull request**, ensuring that only tested and stable code is merged and deployed to production. Packages
+should be regularly updated and CVEs scanned and mitigated promptly.
+
+---
+
+
+## Package Layout
+```text
+./src/main/java
+
+com.chase.app.roman
+├── config            // Classes for configuration settings
+├── controllers       // Web layer /REST API controllers
+├── service           // Business logic and service layer
+├── dal               // Data access layer, typically interfaces for database access
+├── dto               // Data Transfer Objects
+├── exceptions        // Custom exceptions and error handling classes
+└── Application.java  // Main application class
+```
+
+---
+
+## Dependency Attribution
+
+This project utilizes several key technologies and libraries. Below are the main dependencies along with their 
+descriptions and licensing information:
+
+**Spring Framework**: Spring Boot simplifies the development of new Spring applications through convention 
+over configuration. It enables easy setup and development of stand-alone, production-grade 
+Spring based applications. For more details see [official page](https://spring.io/guides/gs/spring-boot/).
+
+- **License**: This product is licensed 
+under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+
+**JUnit**: Unit tests in JUnit Jupiter, enhancing testing capabilities. 
+More on [JUnit 5's Offical Page](https://junit.org/junit5/)
+
+- **License**: This product is licensed under the Eclipse Public License 1.0 (http://www.eclipse.org/legal/epl-v10.html).
+
+---
+
+## Documentation References
+
+### Roman Numerals:
+- [Wikipedia Roman-Numerals reference](https://en.wikipedia.org/wiki/Roman_numerals)
+
+### Spring Web MVC:
+- [Spring MVC Web Docs](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
+
 
 ## Who do I talk to?
 

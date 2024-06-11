@@ -13,3 +13,13 @@ start: # To Launch Browser with Example Query
 test: # To Run Tests for application
 	@echo "Running Tests"
 	@mvn test
+
+
+metric: # To list accessible app Metrics
+	@echo "launching browser for metrics"
+	@open ${LOCAL_ADDRESS}/actuator/metrics
+
+
+metric-cpu: # To see system cpu usage
+	@echo "launching browser for metric - system cpu usage"
+	@open ${LOCAL_ADDRESS}/actuator/metrics/system.cpu.usage

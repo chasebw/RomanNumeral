@@ -57,7 +57,7 @@ public class TestNumberController {
     @Test
     public void testWhenNoQueryValueReturnsBadRequestWithError() throws Exception {
         String url = "/romannumeral";
-        String expected_error = "Invalid Input: required parameter missing 'query'";
+        String expected_error = "Invalid Input: required parameter missing 'query'.";
 
         mvc.perform(get(url))
                 .andExpect(status().isBadRequest())

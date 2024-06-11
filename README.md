@@ -26,7 +26,7 @@
 make run
 ```
 
-- Run via maven
+- Alternatively Run via maven command
 ```bash
 mvn clean install
 mvn spring-boot:run
@@ -56,8 +56,13 @@ mvn test
 ---
 
 ## Where do I access the app?
-- http://localhost:8080/
-- consider setting up swagger?
+- http://localhost:8080/romannumeral?query=22
+
+```bash
+make start
+```
+
+- consider setting up swagger
 
 ---
 

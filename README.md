@@ -130,13 +130,17 @@ descriptions and licensing information:
 over configuration. It enables easy setup and development of stand-alone, production-grade 
 Spring based applications. For more details see [official page](https://spring.io/guides/gs/spring-boot/).
 
-- **License**: This product is licensed 
-under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+- **License**: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 **JUnit**: Unit tests in JUnit Jupiter, enhancing testing capabilities. 
 More on [JUnit 5's Offical Page](https://junit.org/junit5/)
 
-- **License**: This product is licensed under the Eclipse Public License 1.0 (http://www.eclipse.org/legal/epl-v10.html).
+- **License**:  [Eclipse Public License 1.0](http://www.eclipse.org/legal/epl-v10.html).
+
+
+**Caffeine on Github**:  by Ben Manes as performance caching library in our project. 
+see more on [Caffeine on GitHub](https://github.com/ben-manes/caffeine)
+- **License**: [Apache License 2.0](https://github.com/ben-manes/caffeine/blob/master/LICENSE)
 
 ---
 

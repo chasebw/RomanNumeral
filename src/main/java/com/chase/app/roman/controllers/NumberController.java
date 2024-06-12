@@ -3,6 +3,7 @@ package com.chase.app.roman.controllers;
 import com.chase.app.roman.dto.RomanNumeralResponse;
 import com.chase.app.roman.exceptions.InvalidInputException;
 import com.chase.app.roman.service.IRomanNumeralService;
+import com.chase.app.roman.service.RomanNumeralService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +31,17 @@ public class NumberController {
      */
     @GetMapping("/romannumeral")
     public ResponseEntity<RomanNumeralResponse> romanNumeral(
-            @RequestParam(name = "query") int number
+            @RequestParam(name = "query") long number
     ) throws Exception {
         logger.debug("Requested - Roman Numeral Query: {}", number);
 
-        if (number < 1 || number > 3999) {
+
+        if (number < RomanNumeralService.MIN_ROMAN_INT || number > RomanNumeralService.MAX_ROMAN_INT) {
             throw new InvalidInputException(
-                    String.format("Invalid Input: '%s' number out of range [1,3999].", number)
+                    String.format("Invalid Input: '%d' number out of range [%d, %d].",
+                            number,
+                            RomanNumeralService.MIN_ROMAN_INT,
+                            RomanNumeralService.MAX_ROMAN_INT)
             );
         }
 

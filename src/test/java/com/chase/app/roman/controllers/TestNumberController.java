@@ -41,11 +41,11 @@ public class TestNumberController {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 4000})
-    public void testRomanNumeralQueryWhenIntOutOfRangeReturnsBadRequestWithError(int parameterInt) throws Exception {
+    @ValueSource(longs = {-1L, 0L, 2_200_000_001L})
+    public void testRomanNumeralQueryWhenIntOutOfRangeReturnsBadRequestWithError(long parameterInt) throws Exception {
         String url = String.format("/romannumeral?query=%d", parameterInt);
-        when(romanNumeralServiceMock.calculateRomanNumeralFromInt(1)).thenReturn("I");
-        String expected_error = String.format("Invalid Input: '%d' number out of range [1,3999].", parameterInt);
+        when(romanNumeralServiceMock.calculateRomanNumeralFromInt(1L)).thenReturn("I");
+        String expected_error = String.format("Invalid Input: '%d' number out of range [1, 2200000000].", parameterInt);
 
         mvc.perform(get(url))
                 .andExpect(status().isBadRequest())
@@ -57,7 +57,8 @@ public class TestNumberController {
     @Test
     public void testWhenNoQueryValueReturnsBadRequestWithError() throws Exception {
         String url = "/romannumeral";
-        String expected_error = "Invalid Input: required parameter missing 'query'.";
+        String expected_error = "Invalid Input missing required parameter: Required request parameter 'query' " +
+                "for method parameter type long is not present";
 
         mvc.perform(get(url))
                 .andExpect(status().isBadRequest())

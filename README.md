@@ -56,6 +56,7 @@ mvn test
 ---
 
 ## Where do I access the app locally?
+- *Ensure app is running*
 - http://localhost:8080/romannumeral?query=22
 
 ```bash
@@ -79,6 +80,7 @@ are designed to be stateless and are documented using Swagger for clarity and ea
 
 ### Technologies Used
 - **Spring Web MVC**: For rapid API development.
+- **Junit Test FrameWork**: for extensive unit testing.
 
 ---
 
@@ -140,12 +142,19 @@ More on [JUnit 5's Offical Page](https://junit.org/junit5/)
 
 ## Documentation References
 
-### Roman Numerals:
+### Roman Numerals Ref #1:
 - [Wikipedia Roman-Numerals reference](https://en.wikipedia.org/wiki/Roman_numerals)
+
+### Roman Numerals Ref #2:
+- [Roman Numeral - FreeCodeCamp Article](https://www.freecodecamp.org/news/roman-numerals-the-roman-numeral-for-4-6-9-and-others/)
+
+### Roman Numerals Ref #3:
+- [YoutubeVideo](https://www.youtube.com/watch?v=301M30jCugY)
 
 ### Spring Web MVC:
 - [Spring MVC Web Docs](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
 
+---
 
 ## Who do I talk to?
 

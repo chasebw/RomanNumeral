@@ -2,6 +2,7 @@ package com.chase.app.roman.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,9 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class TestRomanNumeralService {
 
+    String cOverline = "\u0305";
+    String dOverline = cOverline + cOverline;
+
     @Test
-    public void testRomanNumeral1() {
-        int input = 1;
+    public void testRomanNumeralMin() {
+        long input = 1;
         RomanNumeralService r = new RomanNumeralService();
 
         String result = r.calculateRomanNumeralFromInt(input);
@@ -32,7 +36,7 @@ public class TestRomanNumeralService {
             "500, D",
             "1000, M",
     })
-    public void testBasicCases(int input, String expected) {
+    public void testBasicCasesSmall(long input, String expected) {
         RomanNumeralService r = new RomanNumeralService();
 
         String result = r.calculateRomanNumeralFromInt(input);
@@ -50,7 +54,7 @@ public class TestRomanNumeralService {
             "2444, MMCDXLIV",
             "3434, MMMCDXXXIV"
     })
-    public void testSubtractiveCases(int input, String expected) {
+    public void testSubtractiveCasesSmall(long input, String expected) {
         RomanNumeralService r = new RomanNumeralService();
 
         String result = r.calculateRomanNumeralFromInt(input);
@@ -66,29 +70,45 @@ public class TestRomanNumeralService {
             "1994, MCMXCIV",
             "2421, MMCDXXI",
     })
-    public void testCompoundCases(int input, String expected) {
+    public void testCompoundCasesSmall(long input, String expected) {
         RomanNumeralService r = new RomanNumeralService();
 
         String result = r.calculateRomanNumeralFromInt(input);
 
+        assertEquals(result, expected);
+    }
+    //    look into csv source
+
+    @Test
+    public void testSingleLargeNumber() {
+        RomanNumeralService r = new RomanNumeralService();
+        long input = 1_999_000_000L;
+
+        String result = r.calculateRomanNumeralFromInt(input);
+
+        String expected = "M" + dOverline + "C" + dOverline +  "M" +  dOverline +
+                "X" + dOverline + "C" + dOverline + "I" + dOverline + "X" + dOverline;
         assertEquals(result, expected);
     }
 
 
     @Test
-    public void testRomanNumeral3999() {
-        int input = 3999;
+    public void testRomanNumeralMax() {
+        long input = 2_200_000_000L;
         RomanNumeralService r = new RomanNumeralService();
 
         String result = r.calculateRomanNumeralFromInt(input);
 
-        String expected = "MMMCMXCIX";
+
+        String mdOverline = "M" + dOverline;
+        String cdOverline = "C" + dOverline;
+        String expected = mdOverline + mdOverline + cdOverline + cdOverline;
         assertEquals(result, expected);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 4000})
-    public void testRomanNumeralIntOutOfRangeThrowIllegalArgumentException(int parameterInt) {
+    @ValueSource(longs = {-1L, 0L, 2_200_000_001L})
+    public void testRomanNumeralIntOutOfRangeThrowIllegalArgumentException(long parameterInt) {
         RomanNumeralService r = new RomanNumeralService();
         IllegalArgumentException ex = assertThrowsExactly(
                 IllegalArgumentException.class,
@@ -96,5 +116,13 @@ public class TestRomanNumeralService {
         );
 
         assertTrue(ex.getMessage().contains("Invalid number:"));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/test_roman_numerals.csv", numLinesToSkip = 1)
+    public void run_csv_test_file(long number, String expected) {
+        RomanNumeralService r = new RomanNumeralService();
+        String result = r.calculateRomanNumeralFromInt(number);
+        assertEquals(result, expected);
     }
 }

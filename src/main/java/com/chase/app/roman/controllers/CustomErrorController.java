@@ -19,6 +19,12 @@ public class CustomErrorController implements ErrorController {
     private static final Logger logger = LoggerFactory.getLogger(CustomErrorController.class);
 
 
+    /**
+     * Custom handling error cases like Not Found or internal server error
+     *
+     * @param request received from client
+     * @return an appropriate ResponseEntity Error for the custom case
+     */
     @RequestMapping("/error")
     public ResponseEntity<Map<String, Object>> handleError(HttpServletRequest request) {
         Map<String, Object> response = new HashMap<>();

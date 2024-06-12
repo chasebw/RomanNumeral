@@ -1,13 +1,17 @@
 package com.chase.app.roman.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class RomanNumeralService implements IRomanNumeralService {
+    private static final Logger logger = LoggerFactory.getLogger(RomanNumeralService.class);
     private static final String cOverline = "\u0305"; // combing overline utf-8 char
     private static final String dOverline = cOverline + cOverline; // double overline
-    private final String[] romanNumeralArr = {
+    private static final String[] romanNumeralArr = {
             doubleOverline("M"),  // 1,000,000,000
             doubleOverline("CM"), // 900,000,000
             doubleOverline("D"),  // 500,000,000
@@ -96,11 +100,13 @@ public class RomanNumeralService implements IRomanNumeralService {
      * @param number integer value to get corresponding romanNumeral for.
      * @return a string for the corresponding romanNumeral for the integer provided
      */
+    @Cacheable("roman-cache")
     public String calculateRomanNumeralFromInt(long number) {
         if (number < MIN_ROMAN_INT || number > MAX_ROMAN_INT ) {
             throw new IllegalArgumentException(
                     "Invalid number: " + number + " valid range from 1 to " + MAX_ROMAN_INT);
         }
+        logger.debug("Calculating Number...");
 
         StringBuilder sb = new StringBuilder();
         for(int i= 0; number > 0; i++) {
@@ -121,7 +127,7 @@ public class RomanNumeralService implements IRomanNumeralService {
      * @param overline overline character to use to apply after each character.
      * @return A string with the overline(hat) applied to all the romanNumeral characters
      */
-    private String applyOverline(String romanNumeral, String overline) {
+    private static String applyOverline(String romanNumeral, String overline) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < romanNumeral.length(); i++) {
             sb.append(romanNumeral.charAt(i));
@@ -130,11 +136,11 @@ public class RomanNumeralService implements IRomanNumeralService {
         return sb.toString();
     }
 
-    private String doubleOverline(String romanNumeral) {
+    private static String doubleOverline(String romanNumeral) {
         return applyOverline(romanNumeral, dOverline);
     }
 
-    private String singleOverline(String romanNumeral) {
+    private static String singleOverline(String romanNumeral) {
         return applyOverline(romanNumeral, cOverline);
     }
 }

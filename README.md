@@ -156,6 +156,14 @@ More on [JUnit 5's Offical Page](https://junit.org/junit5/)
 
 ---
 
+Roman Numerals - Vinculum Use **Clarification**:
+
+- **Vinculum**: is applied after each character with a single "\u305" or twice after.
+- **For example**: M + "\u305" + "\u305" + "M" + "\u305" + "\u305"
+  -  M̅̅M̅̅ = 2,000,000,000
+  - Above we have a A MM with double overline indicating 2 billion
+---
+
 ## Who do I talk to?
 
 ### Contributors

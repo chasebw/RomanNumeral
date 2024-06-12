@@ -10,7 +10,7 @@
   - <https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html>
 - Maven installed
   - <https://maven.apache.org/what-is-maven.html>
-- Make installed
+- Make installed (**Optional**)
   - macos: <https://formulae.brew.sh/formula/make>
   - windows: ...
   - linux: ...
@@ -57,7 +57,7 @@ mvn test
 
 ## Where do I access the app locally?
 - *Ensure app is running*
-- http://localhost:8080/romannumeral?query=22
+- http://localhost:8080/romannumeral?query=2200000000
 
 ```bash
 make start
@@ -158,7 +158,8 @@ More on [JUnit 5's Offical Page](https://junit.org/junit5/)
 
 Roman Numerals - Vinculum Use **Clarification**:
 
-- **Vinculum**: is applied after each character with a single "\u305" or twice after.
+- **Vinculum**: is applied after each character with a single "\u305" or twice after 
+to apply the single overline or double overline.
 - **For example**: M + "\u305" + "\u305" + "M" + "\u305" + "\u305"
   -  M̅̅M̅̅ = 2,000,000,000
   - Above we have a A MM with double overline indicating 2 billion

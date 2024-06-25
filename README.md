@@ -167,7 +167,7 @@ to apply the single overline or double overline.
 - **For example**: M + "\u033F" + "M" + "\u033F"
   - M̿M̿ = 2,000,000,000
   - Above we have A MM with double overline indicating 2 billion
-  
+- Use of Vinculum
   - A single overline indicates multiplication by 1 thousand (10^3) - (\u0305)
   - a double overline indicates a multiplication by 1 million (10^6) - (\u033F)
 ---

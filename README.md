@@ -162,11 +162,11 @@ see more on [Caffeine on GitHub](https://github.com/ben-manes/caffeine)
 
 Roman Numerals - Vinculum Use **Clarification**:
 
-- **Vinculum**: is applied after each character with a single "\u305" or twice after 
+- **Vinculum**: is applied after each character with a single "\u305" or "\u033F" after 
 to apply the single overline or double overline.
-- **For example**: M + "\u305" + "\u305" + "M" + "\u305" + "\u305"
-  -  M̅̅M̅̅ = 2,000,000,000
-  - Above we have a A MM with double overline indicating 2 billion
+- **For example**: M + "\u033F" + "M" + "\u033F"
+  - M̿M̿ = 2,000,000,000
+  - Above we have A MM with double overline indicating 2 billion
 ---
 
 ## Who do I talk to?

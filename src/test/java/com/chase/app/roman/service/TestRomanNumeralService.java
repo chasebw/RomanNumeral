@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestRomanNumeralService {
 
     String cOverline = "\u0305";
-    String dOverline = cOverline + cOverline;
+    String dOverline = "\u033F";
 
     @Test
     public void testRomanNumeralMin() {

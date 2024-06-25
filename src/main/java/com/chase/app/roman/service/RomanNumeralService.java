@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class RomanNumeralService implements IRomanNumeralService {
     private static final Logger logger = LoggerFactory.getLogger(RomanNumeralService.class);
     private static final String cOverline = "\u0305"; // combing overline utf-8 char
-    private static final String dOverline = cOverline + cOverline; // double overline
+    private static final String dOverline = "\u033F"; // double overline
     private static final String[] romanNumeralArr = {
             doubleOverline("M"),  // 1,000,000,000
             doubleOverline("CM"), // 900,000,000
@@ -90,7 +90,7 @@ public class RomanNumeralService implements IRomanNumeralService {
             4L,
             1L
     };
-    public static final long MIN_ROMAN_INT = 1;
+    public static final long MIN_ROMAN_INT = 1L;
     public static final long MAX_ROMAN_INT = 2_200_000_000L;
 
 

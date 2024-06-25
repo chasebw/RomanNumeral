@@ -26,7 +26,7 @@ public class NumberController {
      * Endpoint for handling roman numeral query
      *
      * @param number integer value to get corresponding romanNumeral for.
-     * @return an {@link ResponseEntity} of {@link RomanNumeralResponse} that holds
+     * @return a {@link ResponseEntity} of {@link RomanNumeralResponse} that holds
      * the provided integer from the number `query` and calculated RomanNumeral for that integer.
      */
     @GetMapping("/romannumeral")

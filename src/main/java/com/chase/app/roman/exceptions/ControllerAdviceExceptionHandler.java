@@ -23,14 +23,14 @@ public class ControllerAdviceExceptionHandler {
         logger.error("error: {}", ex.getMessage(), ex);
         Map<String, Object> errorBody = new HashMap<>();
         errorBody.put("error", ex.getMessage());
-        return new ResponseEntity<>(errorBody, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorBody, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Map<String, Object>> handleMisMatchException(Exception ex) {
         Map<String, Object> errorBody = new HashMap<>();
         logger.error("error: {}", ex.getMessage(), ex);
-        errorBody.put("error", "Invalid Input received: bad value received");
+        errorBody.put("error", "Invalid Input received: wrong type provided");
         return new ResponseEntity<>(errorBody, HttpStatus.BAD_REQUEST);
     }
 

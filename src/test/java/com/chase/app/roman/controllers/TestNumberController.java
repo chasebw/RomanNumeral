@@ -34,7 +34,7 @@ public class TestNumberController {
         mvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isMap())
-                .andExpect(jsonPath("$.number").value(1))
+                .andExpect(jsonPath("$.query").value(1))
                 .andExpect(jsonPath("$.romanNumeral").value("I"));
 
     }
@@ -45,10 +45,10 @@ public class TestNumberController {
     public void testRomanNumeralQueryWhenIntOutOfRangeReturnsBadRequestWithError(long parameterInt) throws Exception {
         String url = String.format("/romannumeral?query=%d", parameterInt);
         when(romanNumeralServiceMock.calculateRomanNumeralFromInt(1L)).thenReturn("I");
-        String expected_error = String.format("Invalid Input: '%d' number out of range [1, 2200000000].", parameterInt);
+        String expected_error = String.format("Invalid Input: provided 'query' '%d' number out of range [1, 2200000000].", parameterInt);
 
         mvc.perform(get(url))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isUnprocessableEntity())
                 .andExpect(jsonPath("$").isMap())
                 .andExpect(jsonPath("$.error")
                         .value(expected_error));
@@ -73,5 +73,36 @@ public class TestNumberController {
 
         mvc.perform(get(url))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testWhenInvalidTypeReturns400WithError() throws Exception {
+        String STRING_BAD_VALUE = "BAD_VALUE";
+        String url = String.format("/romannumeral?query=%s", STRING_BAD_VALUE);
+        String expected_error = "Invalid Input received: wrong type provided";
+
+        mvc.perform(get(url))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error")
+                        .value(expected_error));
+    }
+
+    @Test
+    public void testWhenHitErrorPage() throws Exception {
+        String url = "/error";
+        mvc.perform(get(url)).andExpect(status().isInternalServerError());
+    }
+
+
+    @Test
+    public void testX() throws Exception {
+        String STRING_BAD_VALUE = "^^";
+        String url = String.format("/romannumeral?query=%s", STRING_BAD_VALUE);
+        String expected_error = "Invalid Input received: wrong type provided";
+
+        mvc.perform(get(url))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error")
+                        .value(expected_error));
     }
 }

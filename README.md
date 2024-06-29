@@ -54,6 +54,14 @@ mvn test
 ```
 
 ---
+## Generate Test Report
+```bash
+make test
+make generate-report
+make open-report
+```
+
+---
 
 ## Where do I access the app locally?
 - *Ensure app is running*
@@ -162,8 +170,8 @@ see more on [Caffeine on GitHub](https://github.com/ben-manes/caffeine)
 
 Roman Numerals - Vinculum Use **Clarification**:
 
-- **Vinculum**: is applied after each character with a single "\u0305" or "\u033F" after 
-to apply the single overline or double overline.
+- **Vinculum**: is applied after each character with a single "\u0305" or single "\u033F" after 
+to apply the single overline or double overline respectively.
 - **For example**: M + "\u033F" + "M" + "\u033F"
   - M̿M̿ = 2,000,000,000
   - Above we have A MM with double overline indicating 2 billion

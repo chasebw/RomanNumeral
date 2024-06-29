@@ -38,7 +38,7 @@ public class NumberController {
 
         if (number < RomanNumeralService.MIN_ROMAN_INT || number > RomanNumeralService.MAX_ROMAN_INT) {
             throw new InvalidInputException(
-                    String.format("Invalid Input: '%d' number out of range [%d, %d].",
+                    String.format("Invalid Input: provided 'query' '%d' number out of range [%d, %d].",
                             number,
                             RomanNumeralService.MIN_ROMAN_INT,
                             RomanNumeralService.MAX_ROMAN_INT)

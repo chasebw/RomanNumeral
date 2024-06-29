@@ -45,8 +45,8 @@ public class CustomErrorController implements ErrorController {
             }
         }
 
-        logger.error("error: {}", "400 - Unknown Error");
-        response.put("error", "Bad Request: Unknown Error");
+        logger.error("error: {}", "400 - Default Error");
+        response.put("error", "Bad Request: Default Error");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }

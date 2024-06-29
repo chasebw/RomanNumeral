@@ -2,11 +2,11 @@ package com.chase.app.roman.dto;
 
 public class RomanNumeralResponse {
 
-    private long number;
+    private long query;
     private String romanNumeral;
 
-    public RomanNumeralResponse(long number, String romanNumeral) {
-        this.number = number;
+    public RomanNumeralResponse(long query, String romanNumeral) {
+        this.query = query;
         this.romanNumeral = romanNumeral;
     }
 
@@ -16,10 +16,10 @@ public class RomanNumeralResponse {
     public void setRomanNumeral(String romanNumeral) {
         this.romanNumeral = romanNumeral;
     }
-    public long getNumber() {
-        return number;
+    public long getQuery() {
+        return query;
     }
-    public void setNumber(int number) {
-        this.number = number;
+    public void setQuery(int query) {
+        this.query = query;
     }
 }

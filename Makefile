@@ -14,6 +14,9 @@ test: # To Run Tests for application
 	@echo "Running Tests"
 	@mvn test
 
+build: # Install Dependencies
+	@echo "Building and Testing App..."
+	@mvn clean verify
 
 metric: # To list accessible app Metrics
 	@echo "launching browser for metrics"

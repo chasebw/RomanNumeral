@@ -177,7 +177,7 @@ to apply the single overline or double overline respectively.
   - Above we have A MM with double overline indicating 2 billion
 - Use of Vinculum
   - A single overline indicates multiplication by 1 thousand (10^3) - (\u0305)
-  - a double overline indicates a multiplication by 1 million (10^6) - (\u033F)
+  - A double overline indicates a multiplication by 1 million (10^6) - (\u033F)
 ---
 
 ## Who do I talk to?
